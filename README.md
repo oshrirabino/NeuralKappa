@@ -1,7 +1,7 @@
 # NeuralKappa
 
 NeuralKappa is a Python package for rate-independent spike-train irregularity analysis.
-It provides vectorized computation of \(S_I\), fast SI->\(\kappa\) conversion via LUT interpolation,
+It provides vectorized computation of $S_I$, fast $S_I$ -> $\kappa$ conversion via LUT interpolation,
 and baseline metrics/utilities for neural data workflows.
 
 ## Install
