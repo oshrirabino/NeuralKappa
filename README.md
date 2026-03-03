@@ -9,7 +9,7 @@ and baseline metrics/utilities for neural data workflows.
 From GitHub:
 
 ```bash
-pip install git+https://github.com/<org>/<repo>.git
+pip install git+https://github.com/oshrirabino/NeuralKappa.git
 ```
 
 From local clone:
