@@ -37,6 +37,10 @@ pip install .
 - `neuralkappa.lab_tools`
   - `compute_trial_averaged_kappa(list_of_isi_arrays) -> float`  
     Computes SI per trial, averages SI across trials, then maps that average to \(\kappa\).
+  - `compute_kappa_from_timestamps(timestamps) -> float`
+    Convenience wrapper: `timestamps -> ISIs -> SI -> kappa`.
+  - `compare_kappa_conditions(trials_a, trials_b, n_perm=5000, random_state=None) -> dict`
+    Compares two conditions from trial-level ISI arrays using a permutation test on mean kappa.
 - `neuralkappa.simulation`
   - `generate_rate_modulated_gamma(base_kappa, rate_profile, random_state=None) -> np.ndarray`  
     Generates synthetic ISIs from a rate-modulated gamma process for validation and benchmarking.
@@ -98,6 +102,18 @@ where `timestamps` must be strictly increasing and in the same time unit (ms).
   - Input: sequence of trials, where each trial is one ISI array for the same neuron/condition.
   - Output: one scalar `kappa` computed by averaging trial SI values, then converting SI -> kappa.
   - Use this for a single summary irregularity value per neuron across repeated trials.
+
+- `compute_kappa_from_timestamps(timestamps) -> float`
+  - Input: one strictly increasing 1D timestamps array.
+  - Output: one scalar kappa.
+  - Use this when raw timestamps are available and you want a single-step conversion.
+
+- `compare_kappa_conditions(trials_a, trials_b, n_perm=5000, random_state=None) -> dict`
+  - Input:
+    - `trials_a`: sequence of ISI arrays for condition A.
+    - `trials_b`: sequence of ISI arrays for condition B.
+  - Output: dictionary with condition means, mean-difference effect size, permutation p-value, and trial counts.
+  - Use this for A/B condition inference on kappa using trial-level ISI data.
 
 #### @ Auther: Oshrira
 #### @ Using codex agent
