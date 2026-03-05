@@ -11,7 +11,6 @@ requires-python = ">=3.10"
 dependencies = [
   "numpy",
   "scipy",
-  "scikit-learn",
 ]
 
 [tool.setuptools.packages.find]

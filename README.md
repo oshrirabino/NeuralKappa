@@ -37,8 +37,6 @@ pip install .
 - `neuralkappa.lab_tools`
   - `compute_trial_averaged_kappa(list_of_isi_arrays) -> float`  
     Computes SI per trial, averages SI across trials, then maps that average to \(\kappa\).
-  - `build_clustering_matrix(kappas, rates, widths, standardize=True) -> np.ndarray`  
-    Stacks `[kappa, rate, width]` into a feature matrix and optionally z-score standardizes columns.
 - `neuralkappa.simulation`
   - `generate_rate_modulated_gamma(base_kappa, rate_profile, random_state=None) -> np.ndarray`  
     Generates synthetic ISIs from a rate-modulated gamma process for validation and benchmarking.
@@ -100,15 +98,6 @@ where `timestamps` must be strictly increasing and in the same time unit (ms).
   - Input: sequence of trials, where each trial is one ISI array for the same neuron/condition.
   - Output: one scalar `kappa` computed by averaging trial SI values, then converting SI -> kappa.
   - Use this for a single summary irregularity value per neuron across repeated trials.
-
-- `build_clustering_matrix(kappas, rates, widths, standardize=True) -> np.ndarray`
-  - Inputs:
-    - `kappas`: 1D array of per-neuron kappa values
-    - `rates`: 1D array of per-neuron mean firing rates
-    - `widths`: 1D array of per-neuron waveform widths (or another third feature)
-    - All three inputs must be same length and finite.
-  - Output: matrix with shape `(n_neurons, 3)` and column order `[kappa, rate, width]`.
-  - If `standardize=True`, each column is z-scored for direct use in scikit-learn clustering.
 
 #### @ Auther: Oshrira
 #### @ Using codex agent
